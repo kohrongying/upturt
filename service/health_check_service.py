@@ -1,6 +1,6 @@
 from urllib3.exceptions import NewConnectionError, MaxRetryError
 
-from domain.WebsiteStatus import WebsiteStatus
+from domain.website_status import WebsiteStatus
 from pydantic import HttpUrl, validate_arguments
 import urllib3
 
@@ -17,9 +17,5 @@ class HealthCheckService:
                 '200': WebsiteStatus.up,
             }
             return mapping.get(str(r.status), WebsiteStatus.down)
-        except NewConnectionError:
-            return WebsiteStatus.down
-        except MaxRetryError:
-            return WebsiteStatus.down
-        finally:
+        except Exception:
             return WebsiteStatus.down
