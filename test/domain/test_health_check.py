@@ -16,4 +16,4 @@ class TestHealthCheck(unittest.TestCase):
         hc = HealthCheck(url=parse_obj_as(HttpUrl, "http://google.com"), status=WebsiteStatus.up)
         dict = hc.to_airtable_model()
         self.assertEqual(dict["Domain"], "http://google.com")
-        self.assertEqual(dict["Status"], "true")
+        self.assertEqual(dict["Status"], True)

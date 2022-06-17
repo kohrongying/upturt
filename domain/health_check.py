@@ -12,7 +12,7 @@ class HealthCheck(BaseModel):
     def to_airtable_model(self):
         return {
             "Domain": self.url,
-            "Status": "true" if self.status == WebsiteStatus.up else "false",
+            "Status": self.status == WebsiteStatus.up,
             "Date": str(self.status_dt)
         }
 
