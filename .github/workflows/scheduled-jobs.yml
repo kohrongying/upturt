@@ -16,4 +16,5 @@ jobs:
           python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
       - run: make install
+      - run: export AIRTABLE_API_KEY=${{ secrets.AIRTABLE_API_KEY }}
       - run: make cron-healthcheck
