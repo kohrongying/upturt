@@ -17,5 +17,6 @@ class HealthCheckService:
                 '200': WebsiteStatus.up,
             }
             return mapping.get(str(r.status), WebsiteStatus.down)
-        except Exception:
+        except Exception as e:
+            print(e)
             return WebsiteStatus.down
