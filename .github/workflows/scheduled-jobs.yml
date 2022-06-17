@@ -22,6 +22,7 @@ jobs:
             ${{ runner.os }}-pip-
       - run: make install
       - shell: bash
+        name: run cron job
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
         run: |
