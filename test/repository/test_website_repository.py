@@ -3,6 +3,7 @@ from unittest import TestCase
 
 from pydantic import parse_obj_as, HttpUrl
 
+from domain.website import Website
 from repository.website_repository import WebsiteRepository
 
 
@@ -17,4 +18,7 @@ class TestWebsiteRepository(TestCase):
 
     def test_import_from_file_should_return_list(self):
         repo = WebsiteRepository(website_folder_dir=Path(__file__).parent)
-        self.assertEqual(repo.websites, [parse_obj_as(HttpUrl, "http://example.com"), parse_obj_as(HttpUrl, "http://test.com")])
+        self.assertEqual(repo.websites, [
+            Website(url=parse_obj_as(HttpUrl, "http://example.com")),
+            Website(url=parse_obj_as(HttpUrl, "http://test.com"))
+        ])
