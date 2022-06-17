@@ -1,11 +1,10 @@
 from datetime import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 
-from domain.website import Website
 from domain.website_status import WebsiteStatus
 
 
 class HealthCheck(BaseModel):
-    website: Website
+    url: HttpUrl
     status: WebsiteStatus
     status_dt: datetime = datetime.now()
