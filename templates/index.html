@@ -1,10 +1,19 @@
 <html>
 <head>
-    <title>Item Details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
 </head>
 <body>
-    <h1>Hello world</h1>
-    <p>data is {{ data }} </p>
+    <section class="container md mx-auto">
+        <h1 class="text-3xl pt-12 pb-8 font-bold">UpTurt</h1>
+
+        <ul>
+            {% for record in data %}
+                <li class="{{ 'bg-green-200' if record.status == 'up' else 'bg-red-200' }} py-3 px-6 mb-4 rounded">{{ record.url }} is {{ record.status }} </li>
+            {% endfor %}
+        </ul>
+    </section>
 </body>
 </html>
