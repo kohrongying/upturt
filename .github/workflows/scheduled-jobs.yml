@@ -2,7 +2,7 @@ name: Trigger Healthcheckson a CRON Schedule
 
 on:
   schedule:
-    - cron: '5 * * * *'
+    - cron: '5 */2 * * *'
 
 jobs:
   build:
@@ -26,5 +26,4 @@ jobs:
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
         run: |
-          export AIRTABLE_API_KEY="$AIRTABLE_API_KEY"
           make cron-healthcheck
