@@ -8,7 +8,7 @@ import os
 
 api_key = os.environ["AIRTABLE_API_KEY"]
 base_id = 'apph8KjTUqc4kP4wj'
-status_table_name = 'Status'
+status_table_name = os.environ["AIRTABLE_STATUS_TABLE_NAME"]
 status_table = Table(api_key, base_id, status_table_name)
 
 

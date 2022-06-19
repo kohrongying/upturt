@@ -25,5 +25,6 @@ jobs:
         name: run cron job
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_STATUS_TABLE_NAME: Status
         run: |
           make cron-healthcheck
