@@ -14,6 +14,11 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 
+@app.get('/healthcheck')
+def healthcheck():
+    return {'status': 'up'}
+
+
 @app.get("/", response_class=HTMLResponse, response_model=HealthCheck)
 async def read_root(request: Request):
     data: List[HealthCheck] = UiService.get_most_recent_records()
