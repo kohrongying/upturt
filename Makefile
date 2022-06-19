@@ -9,3 +9,6 @@ cleanup:
 
 install:
 	pip install -r requirements.txt
+
+local:
+	uvicorn main:app --reload
