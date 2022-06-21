@@ -26,5 +26,6 @@ jobs:
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
           AIRTABLE_STATUS_TABLE_NAME: Status
+          AIRTABLE_BASE_ID: apph8KjTUqc4kP4wj
         run: |
           make cron-healthcheck

@@ -11,7 +11,7 @@ from datetime import datetime
 from domain.website_status import WebsiteStatus
 
 api_key = os.environ.get("AIRTABLE_API_KEY")
-base_id = 'apph8KjTUqc4kP4wj'
+base_id = os.environ.get("AIRTABLE_BASE_ID")
 status_table_name = os.environ.get("AIRTABLE_STATUS_TABLE_NAME")
 status_table = Table(api_key, base_id, status_table_name)
 
