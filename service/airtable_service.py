@@ -51,7 +51,7 @@ class AirtableService:
             print(e)
 
     @staticmethod
-    def filter_records_created_earlier_than(target_date: str) -> List[Dict[str, str]]:
+    def filter_records_created_earlier_than(target_date: str) -> List[AirtableStatusRecord]:
         try:
             created_field = FIELD("Created")
             formula = f"IS_BEFORE({created_field}, {to_airtable_value(target_date)})"
