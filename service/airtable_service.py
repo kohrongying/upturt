@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 import pytz
 from pyairtable import Table
@@ -37,16 +37,16 @@ class AirtableStatusRecord(BaseModel):
 class AirtableService:
 
     @validate_arguments
-    def batch_create_health_check(self, health_check_records: List[HealthCheck]):
+    def batch_create_health_check(self, health_check_records: List[HealthCheck]) -> None:
         try:
-            response = status_table.batch_create([hc.to_airtable_model() for hc in health_check_records])
+            status_table.batch_create([hc.to_airtable_model() for hc in health_check_records])
         except Exception as e:
             print(e)
 
     @staticmethod
-    def batch_delete(record_ids: List[str]):
+    def batch_delete(record_ids: List[str]) -> None:
         try:
-            response = status_table.batch_delete(record_ids)
+            status_table.batch_delete(record_ids)
         except Exception as e:
             print(e)
 
@@ -60,21 +60,12 @@ class AirtableService:
         except Exception as e:
             print(e)
 
-    @staticmethod
-    def filter_records_created_after(target_date: str) -> List[AirtableStatusRecord]:
-        try:
-            created_field = FIELD("Created")
-            formula = f"IS_AFTER({created_field}, {to_airtable_value(target_date)})"
-            response = status_table.all(formula=formula)
-            return response
-        except Exception as e:
-            print(e)
-
-    def get_most_recent_status(self, domain: str) -> List[AirtableStatusRecord]:
+    def get_most_recent_status(self, domain: str) -> Optional[AirtableStatusRecord]:
         formula = match({"Domain": domain})
         max_records = 1
         sort = ["-Created"]
-        return self.filter(formula, max_records, sort)
+        records = self.filter(formula, max_records, sort)
+        return records[0] if records else None
 
     @staticmethod
     def filter(formula: str, max_records: int, sort: List[str]) -> List[AirtableStatusRecord]:

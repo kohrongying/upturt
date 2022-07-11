@@ -11,4 +11,4 @@ install:
 	pip install -r requirements.txt
 
 local:
-	uvicorn main:app --reload
+	source .env && uvicorn main:app --reload

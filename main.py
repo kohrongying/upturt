@@ -1,11 +1,11 @@
-from typing import  List
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from typing import List
+from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from fastapi.encoders import jsonable_encoder
 from domain.health_check import HealthCheck
-from service.ui_service import UiService
+from domain.website import Website
+from repository.website_repository import WebsiteRepository
+from service.airtable_service import AirtableService, AirtableStatusRecord
 
 app = FastAPI()
 
@@ -19,10 +19,12 @@ def healthcheck():
     return {'status': 'up'}
 
 
-@app.get("/", response_class=HTMLResponse, response_model=HealthCheck)
-async def read_root(request: Request):
-    data: List[HealthCheck] = UiService.get_most_recent_records()
-    return templates.TemplateResponse(
-        "index.html",
-        {"request": request, "data": [jsonable_encoder(hc) for hc in data] }
-    )
+@app.get("/")
+def read_root():
+    websites: List[Website] = WebsiteRepository().websites
+    health_check_records: List[HealthCheck] = []
+    for website in websites:
+        record: AirtableStatusRecord = AirtableService().get_most_recent_status(website.url)
+        if record:
+            health_check_records.append(record.to_health_check())
+    return health_check_records
