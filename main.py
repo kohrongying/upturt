@@ -1,5 +1,6 @@
 from typing import List
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from domain.health_check import HealthCheck
@@ -8,7 +9,17 @@ from repository.website_repository import WebsiteRepository
 from service.airtable_service import AirtableService, AirtableStatusRecord
 
 app = FastAPI()
-
+origins = [
+    "http://localhost",
+    "http://localhost:8000",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
