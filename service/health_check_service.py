@@ -12,7 +12,10 @@ class HealthCheckService:
     @validate_arguments
     def ping(self, url: HttpUrl) -> WebsiteStatus:
         try:
-            r = http.request('GET', url)
+            headers = {
+                'Cache-Control': 'max-age=0, must-revalidate, no-store'
+            }
+            r = http.request('GET', url, headers=headers)
             mapping = {
                 '200': WebsiteStatus.up,
             }
