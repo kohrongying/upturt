@@ -12,6 +12,7 @@ app = FastAPI()
 origins = [
     "http://localhost",
     "http://localhost:8000",
+    "https://upturt.deno.dev"
 ]
 app.add_middleware(
     CORSMiddleware,
