@@ -2,13 +2,13 @@ from typing import List, Dict, Optional
 
 import pytz
 from pyairtable import Table
-from pyairtable.formulas import FIELD, EQUAL, to_airtable_value, match
+from pyairtable.formulas import FIELD, to_airtable_value, match
 
-from domain.health_check import HealthCheck
+from src.domain.health_check import HealthCheck
 from pydantic import validate_arguments, BaseModel
 import os
 from datetime import datetime
-from domain.website_status import WebsiteStatus
+from src.domain.website_status import WebsiteStatus
 
 api_key = os.environ.get("AIRTABLE_API_KEY")
 base_id = os.environ.get("AIRTABLE_BASE_ID")

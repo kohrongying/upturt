@@ -3,8 +3,8 @@ from unittest import TestCase
 
 from pydantic import parse_obj_as, HttpUrl
 
-from domain.website import Website
-from repository.website_repository import WebsiteRepository
+from src.domain.website import Website
+from src.repository.website_repository import WebsiteRepository
 
 
 class TestWebsiteRepository(TestCase):

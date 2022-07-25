@@ -1,10 +1,10 @@
 import unittest
 
-from datetime import datetime, timezone, date
+from datetime import date
 import pytz
 
-from domain.website_status import WebsiteStatus
-from service.airtable_service import AirtableStatusRecord
+from src.domain.website_status import WebsiteStatus
+from src.service.airtable_service import AirtableStatusRecord
 
 
 class TestAirtableService(unittest.TestCase):

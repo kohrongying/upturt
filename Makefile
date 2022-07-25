@@ -2,13 +2,13 @@ ci-test:
 	python -m unittest
 
 cron-healthcheck:
-	python run_healthcheck.py
+	python -m src.cron.run_healthcheck
 
 cleanup:
-	python run_cleanup.py
+	python -m src.cron.run_cleanup
 
 install:
 	pip install -r requirements.txt
 
 local:
-	source .env && uvicorn main:app --reload
+	source .env-dev && uvicorn main:app --reload

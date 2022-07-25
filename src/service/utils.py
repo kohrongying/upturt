@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 
 def get_project_root() -> Path:
-    return Path(__file__).parent.parent
+    return Path(__file__).parent.parent.parent
 
 
 def get_datetime_n_days_ago(num_days_ago: int) -> str:

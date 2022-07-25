@@ -1,10 +1,10 @@
 import math
 from typing import List
 
-from domain.website import Website
-from repository.website_repository import WebsiteRepository
-from service.airtable_service import AirtableService, AirtableStatusRecord
-from service.utils import get_datetime_n_days_ago
+from src.domain.website import Website
+from src.repository.website_repository import WebsiteRepository
+from src.service.airtable_service import AirtableStatusRecord, AirtableService
+from src.service.utils import get_datetime_n_days_ago
 
 
 def calculate_max_data_storage_days() -> int:

@@ -1,9 +1,9 @@
 from typing import List
 
-from domain.health_check import HealthCheck
-from domain.website import Website
-from repository.website_repository import WebsiteRepository
-from service.airtable_service import AirtableService
+from src.domain.health_check import HealthCheck
+from src.domain.website import Website
+from src.repository.website_repository import WebsiteRepository
+from src.service.airtable_service import AirtableService
 
 if __name__ == '__main__':
     websites: List[Website] = WebsiteRepository().websites

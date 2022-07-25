@@ -1,7 +1,7 @@
 from datetime import datetime
 from pydantic import BaseModel, HttpUrl
 
-from domain.website_status import WebsiteStatus
+from src.domain.website_status import WebsiteStatus
 
 
 class HealthCheck(BaseModel):

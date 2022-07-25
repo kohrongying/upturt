@@ -2,8 +2,8 @@ import unittest
 
 from pydantic import parse_obj_as, HttpUrl
 
-from domain.health_check import HealthCheck
-from domain.website_status import WebsiteStatus
+from src.domain.health_check import HealthCheck
+from src.domain.website_status import WebsiteStatus
 
 
 class TestHealthCheck(unittest.TestCase):

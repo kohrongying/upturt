@@ -3,9 +3,9 @@ from unittest import mock
 
 from pydantic import ValidationError, parse_obj_as, HttpUrl
 
-from domain.health_check import HealthCheck
-from domain.website import Website
-from domain.website_status import WebsiteStatus
+from src.domain.health_check import HealthCheck
+from src.domain.website import Website
+from src.domain.website_status import WebsiteStatus
 
 
 class TestWebsite(unittest.TestCase):
@@ -14,7 +14,7 @@ class TestWebsite(unittest.TestCase):
         with self.assertRaises(ValidationError) as context:
             Website(url="http://example")
 
-    @mock.patch('service.health_check_service')
+    @mock.patch('src.service.health_check_service')
     def test_get_health_check(self, mock_service):
         url: HttpUrl = parse_obj_as(HttpUrl, "http://google.com")
         website = Website(url=url)

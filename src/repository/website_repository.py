@@ -3,8 +3,8 @@ from typing import List
 
 from pydantic import BaseModel, HttpUrl, parse_obj_as
 
-from domain.website import Website
-from service.utils import get_project_root
+from src.domain.website import Website
+from src.service.utils import get_project_root
 
 
 class WebsiteRepository(BaseModel):

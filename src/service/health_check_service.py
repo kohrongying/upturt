@@ -1,6 +1,4 @@
-from urllib3.exceptions import NewConnectionError, MaxRetryError
-
-from domain.website_status import WebsiteStatus
+from src.domain.website_status import WebsiteStatus
 from pydantic import HttpUrl, validate_arguments
 import urllib3
 

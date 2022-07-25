@@ -2,8 +2,8 @@ import unittest
 
 from pydantic import ValidationError, HttpUrl, parse_obj_as
 
-from domain.website_status import WebsiteStatus
-from service.health_check_service import HealthCheckService
+from src.domain.website_status import WebsiteStatus
+from src.service.health_check_service import HealthCheckService
 
 
 class TestHealthCheckService(unittest.TestCase):

@@ -19,7 +19,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
       - run: make install
-      - run: make ci-test
+      - run: make ci-tests
 
   deploy:
     needs: build

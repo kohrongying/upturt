@@ -3,10 +3,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from domain.health_check import HealthCheck
-from domain.website import Website
-from repository.website_repository import WebsiteRepository
-from service.airtable_service import AirtableService, AirtableStatusRecord
+from src.domain.health_check import HealthCheck
+from src.domain.website import Website
+from src.repository import WebsiteRepository
+from src.service.airtable_service import AirtableService, AirtableStatusRecord
 
 app = FastAPI()
 origins = [
