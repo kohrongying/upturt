@@ -1,4 +1,4 @@
-ci-test:
+test:
 	python -m unittest
 
 cron-healthcheck:
